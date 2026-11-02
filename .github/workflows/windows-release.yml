@@ -30,10 +30,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: pwsh
         run: |
-          $tag = 'v1.0.1'
+          $tag = 'v1.0.2'
           gh release view $tag --repo $env:GITHUB_REPOSITORY 2>$null
           if ($LASTEXITCODE -ne 0) {
-            gh release create $tag dist/CatDesktopPet.exe --title '小猫桌宠 v1.0.1' --notes '64 位 Windows 桌宠程序。下载 CatDesktopPet.exe 后双击运行。' --repo $env:GITHUB_REPOSITORY
+            gh release create $tag dist/CatDesktopPet.exe --title '小猫桌宠 v1.0.2' --notes '64 位 Windows 桌宠程序。下载 CatDesktopPet.exe 后双击运行。' --repo $env:GITHUB_REPOSITORY
           } else {
             gh release upload $tag dist/CatDesktopPet.exe --clobber --repo $env:GITHUB_REPOSITORY
           }
