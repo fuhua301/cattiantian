@@ -1,0 +1,40 @@
+name: Build Windows release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build executable
+        run: python -m PyInstaller --noconfirm CatDesktopPet.spec
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CatDesktopPet-windows-x64
+          path: dist/CatDesktopPet.exe
+      - name: Publish Windows release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          $tag = 'v1.0.0'
+          gh release view $tag --repo $env:GITHUB_REPOSITORY 2>$null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag dist/CatDesktopPet.exe --title '小猫桌宠 v1.0.0' --notes '64 位 Windows 桌宠程序。下载 CatDesktopPet.exe 后双击运行。' --repo $env:GITHUB_REPOSITORY
+          } else {
+            gh release upload $tag dist/CatDesktopPet.exe --clobber --repo $env:GITHUB_REPOSITORY
+          }
+          if ($LASTEXITCODE -ne 0) { throw 'Release upload failed' }
