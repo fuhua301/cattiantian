@@ -121,7 +121,7 @@ class Pet(QWidget):
         self.click_timer.setTimerType(Qt.PreciseTimer)
         self.click_timer.setInterval(QApplication.doubleClickInterval())
         self.click_timer.timeout.connect(self.pet)
-        self.setWindowTitle('照片猫咪桌宠 · 取名修复版 v11')
+        self.setWindowTitle('照片猫咪桌宠 · 摇头与行走修复版 v12')
         self.setWindowFlags(Qt.FramelessWindowHint|Qt.WindowStaysOnTopHint|Qt.Tool)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setAttribute(Qt.WA_ShowWithoutActivating)

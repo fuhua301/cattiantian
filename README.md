@@ -4,7 +4,7 @@
 
 ## 下载使用
 
-打开本仓库的 [Releases](../../releases) 页面，下载 `CatDesktopPet.exe`，在 64 位 Windows 上双击运行。该程序无需安装 Python。启动后右键猫咪或通知区域的猫咪图标可打开菜单；双击猫咪可触发扑跳。
+打开本仓库的 [Releases](https://github.com/fuhua301/cattiantian/releases/latest) 页面，下载 `CatDesktopPet.exe`，在 64 位 Windows 上双击运行。该程序无需安装 Python。启动后右键猫咪或通知区域的猫咪图标可打开菜单；双击猫咪可触发扑跳。
 
 首次发布的 Windows 程序由本仓库的 GitHub Actions 自动构建并上传到 Releases；如果刚上传完成，请等待 Actions 构建结束。
 
@@ -34,6 +34,11 @@ python -m venv .venv
 ```
 
 生成的文件位于 `dist\CatDesktopPet.exe`。也可在 GitHub 的 Actions 页面手动运行 **Build Windows release**。
+
+## 最新修复
+
+- 清理正面摇头时耳朵的插帧叠影。
+- 柔化行走时腿根与身体的接缝，并更新起步、停步及走跑切换的接点。
 
 ## 说明
 
